@@ -1,3 +1,4 @@
+// all the variables amd default values
 const container = document.querySelector(".canvas");
 const sizeButtons = document.querySelectorAll("button");
 const sizeSlider = document.querySelector("#sizeSlider");
@@ -11,14 +12,17 @@ let size = 16;
 let currentColor = "black";
 let currentMode = "color";
 
+// initialize functions
 window.onload = () => {
     createGrid(size);
 }
 
+// create a variable that keeps track of the mouse state
 let mouseDown = false
 document.body.onmousedown = () => (mouseDown = true);
 document.body.onmouseup = () => (mouseDown = false);
 
+// add all event listeners
 sizeSlider.onmousemove = (e) => updateSizeValue(e.target.value);
 sizeSlider.onchange = (e) => changeSize(e.target.value);
 colorPicker.oninput = (e) => currentColor = e.target.value;
@@ -27,6 +31,7 @@ rgbMode.onclick = () => currentMode = 'rainbow';
 eraserButton.onclick = () => currentMode = 'eraser';
 clearButton.onclick = () => changeSize(size);
 
+// create a function that changes the color of the divs
 function changeColor(e) {
     if (e.type === 'mouseover' && !mouseDown) return
     if (currentMode === 'rainbow') {
